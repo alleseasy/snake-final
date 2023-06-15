@@ -2,12 +2,7 @@ package hdm.lab.snake;
 
 public class GameClock extends Thread {
 	public static boolean running = true;
-	//timer
-	static long startTime = System.currentTimeMillis();
-	static long elapsedTime = System.currentTimeMillis() - startTime;
-	static long elapsedSeconds = elapsedTime / 1000;
-	static long secondsDisplay = elapsedSeconds % 60;
-	static long elapsedMinutes = elapsedSeconds / 60;
+
 	
 	public void run() {
 		for (int i = 0; i < 9; i++) {
@@ -25,7 +20,8 @@ public class GameClock extends Thread {
 				Collision.collideSnail();
 				Collision.collideSelf();
 				Collision.collideWall();
-
+				Snake.timer();
+				
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

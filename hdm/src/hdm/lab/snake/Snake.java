@@ -18,6 +18,12 @@ public class Snake {
 
 	public static Snail[] snails = new Snail[3];
 	
+	static long startTime = System.currentTimeMillis();
+	static long elapsedTime;
+	static long elapsedSeconds;
+	static long secondsDisplay;
+	static long elapsedMinutes;
+	
 
 	static {
 		for (int i = 0; i < snails.length; i++) {
@@ -115,6 +121,13 @@ public class Snake {
 		}
 	}
 	
+	// timer
+	public static void timer() {
+		elapsedTime = System.currentTimeMillis() - startTime;
+		elapsedSeconds = elapsedTime / 1000;
+		secondsDisplay = elapsedSeconds % 60;
+		elapsedMinutes = elapsedSeconds / 60;
+	}
 
 
 	// position to coordinates

@@ -7,7 +7,6 @@ import java.util.Date;
 public class Draw extends JLabel {
 
 	Point p;
-	Date date;
 
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -15,27 +14,31 @@ public class Draw extends JLabel {
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
 
 		// Draw BAckground
-		g.setColor(Color.blue);
+		g.setColor(new Color(190, 191, 174));
 		g.fillRect(0, 0, Gui.width, Gui.height);
-
+		
+		// draw border
+		g.setColor(new Color(25, 133, 45));
+		g.fillRect(0, 90, 780, 780);
+		
 		// Draw BAckground Field
-		g.setColor(Color.lightGray);
-		g.fillRect(40, 120, 720, 720);
+		g.setColor(new Color(243, 250, 110));
+		g.fillRect(30, 120, 720, 720);
 
 		// Draw snake tails
-		g.setColor(new Color(51, 204, 51));
+		g.setColor(new Color(227, 107, 217));
 		for (int i = 0; i < Snake.tails.size(); i++) {
 			p = Snake.ptc(Snake.tails.get(i).getX(), Snake.tails.get(i).getY());
 			g.fillRect(p.x, p.y, 30, 30);
 		}
 
 		// draw snake head
-		g.setColor(new Color(0, 153, 0));
+		g.setColor(new Color(145, 26, 135));
 		p = Snake.ptc(Snake.head.getX(), Snake.head.getY());
 		g.fillRect(p.x, p.y, 30, 30);
 
 		// draw pickup
-		g.setColor(Color.cyan);
+		g.setColor(Color.red);
 		p = Snake.ptc(Snake.pickup.getX(), Snake.pickup.getY());
 		g.fillRect(p.x, p.y, 30, 30);
 
@@ -61,9 +64,9 @@ public class Draw extends JLabel {
 		// draw score
 		g.setFont(new Font("Arial", Font.BOLD, 20));
 		g.drawString("Punkte: " + Snake.score, 5, 25);
-		g.drawString("Spielzeit: " + GameClock.elapsedMinutes + ":" + GameClock.elapsedSeconds + ":" + GameClock.secondsDisplay, 600, 25);
+		g.drawString("Spielzeit: " + Snake.elapsedMinutes + ":" + Snake.secondsDisplay, 645, 25);
 		g.setFont(new Font("Arial", Font.BOLD, 50));
-		g.drawString("SNAKE", 315, 50);
+		g.drawString("SNAKE", 300, 50);
 
 		repaint();
 
